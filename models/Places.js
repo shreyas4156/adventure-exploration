@@ -11,8 +11,8 @@ const Places = mongoose.model(
       type: String,
       required: true,
     },
-    images: {
-      type: Array,
+    image: {
+      type: String,
     },
     description: {
       type: String,

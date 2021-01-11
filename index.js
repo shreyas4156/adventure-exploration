@@ -28,6 +28,19 @@ app.get("/states/:name", async (req, res) => {
   if (!places) res.status(404).send("No places");
   res.json(places);
 });
+app.get("/places", async (req, res) => {
+  const places = await Places.find().catch(res.status(404));
+  if (!places) res.status(404).send("No places");
+  res.status(200).json(places);
+});
+
+app.get("/places/:name", async (req, res) => {
+  const place = await Places.find()
+    .filter((place) => place === req.params.name)
+    .catch(res.status(404));
+  if (!place) res.status(404).send("No places");
+  res.json(place);
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`Listerning on port ${process.env.PORT}`);
