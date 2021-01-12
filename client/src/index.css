@@ -1,7 +1,28 @@
+html,
 body {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  height: 100%;
+  margin: 0;
+  background: url(https://i.pinimg.com/originals/69/6a/84/696a84779ed18f7d905f7d8461bc7485.jpg)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 1.5em;
+  }
+}
+.jumbotron {
+  background: rgba(204, 204, 204, 0.8);
+  padding-left: 40px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }
 
-div {
-  text-align: center;
+.nav-link {
+  opacity: 1;
 }

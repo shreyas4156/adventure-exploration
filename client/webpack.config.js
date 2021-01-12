@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
   },
+  mode: "development",
   module: {
     rules: [
       {
@@ -14,11 +15,28 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.js$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
+      {
+        test: /\.(jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+      { test: /\.jsx?$/, resolve: { extensions: [".js", ".jsx"] } },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      },
     ],
+  },
+  performance: {
+    hints: false,
   },
   plugins: [
     new hwp({
