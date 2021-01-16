@@ -1,6 +1,6 @@
 import React from "react";
-import { Jumbotron, Button } from "reactstrap";
-const Header = () => {
+import { NavLink } from "react-router-dom";
+const Header = (props) => {
   return (
     <div>
       <nav
@@ -10,9 +10,9 @@ const Header = () => {
           backgroundColor: "rgba(204, 204, 204, 0.8)",
         }}
       >
-        <div className="container">
+        <div>
           <a className="navbar-brand" href="#">
-            Adventure
+            <h3>Adventure</h3>
           </a>
           <button
             className="navbar-toggler"
@@ -33,7 +33,6 @@ const Header = () => {
                   Home <span className="sr-only">(current)</span>
                 </a>
               </li>
-
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -51,41 +50,19 @@ const Header = () => {
                   aria-labelledby="navbarDropdown"
                   style={{ backgroundColor: "rgba(204, 204, 204, 0.8)" }}
                 >
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
+                  {props.states.map((state) => {
+                    return (
+                      <a className="dropdown-item" href="/" key={state._id}>
+                        {state.label}
+                      </a>
+                    );
+                  })}
                 </div>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      <Jumbotron>
-        <h1 className="display-2">
-          India {"  "}
-          <img src="https://img.icons8.com/emoji/65/000000/india-emoji.png" />
-        </h1>
-        <p className="lead">
-          <strong>India is a land of Unity in Diversity,</strong>{" "}
-        </p>
-        <hr className="my-2" />
-        <p>
-          India, country that occupies the greater part of South Asia. Its
-          capital is New Delhi, built in the 20th century just south of the
-          historic hub of Old Delhi to serve as India’s administrative centre.
-          Its government is a constitutional republic that represents a highly
-          diverse population consisting of thousands of ethnic groups and likely
-          hundreds of languages.With roughly one-sixth of the world’s total
-          population, India is the second most populous country, after China.
-        </p>
-      </Jumbotron>
     </div>
   );
 };

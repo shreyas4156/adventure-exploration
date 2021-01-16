@@ -9,11 +9,6 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-@media screen and (max-width: 480px) {
-  body {
-    font-size: 1.5em;
-  }
-}
 .jumbotron {
   background: rgba(204, 204, 204, 0.8);
   padding-left: 40px;
@@ -25,4 +20,16 @@ body {
 
 .nav-link {
   opacity: 1;
+}
+
+main {
+  min-height: calc(100vh - 56px - 121px);
+}
+.text-seconary {
+  color: rgba(26, 24, 24, 0.9);
+  font-style: italic;
+  background-color: rgba(204, 204, 204, 0.5);
+}
+.carousel {
+  margin: 10px;
 }
