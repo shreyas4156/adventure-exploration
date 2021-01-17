@@ -6,6 +6,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "dist"),
+    publicPath: "/",
   },
   mode: "development",
   module: {
@@ -34,6 +35,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   performance: {
     hints: false,

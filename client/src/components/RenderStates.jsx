@@ -21,9 +21,11 @@ const RenderStates = (props) => {
         }}
       >
         <Media heading style={{ textAlign: "left" }}>
-          {props.state.label}
+          {props.state.label || props.state.name}
         </Media>
-        <p style={{ textAlign: "left" }}>{props.state.caption}</p>
+        <p style={{ textAlign: "left" }}>
+          {props.state.caption || props.state.description}
+        </p>
       </Media>
     </Media>
   );
