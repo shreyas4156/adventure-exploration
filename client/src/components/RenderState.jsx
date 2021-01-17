@@ -12,7 +12,7 @@ import {
   CardSubtitle,
 } from "reactstrap";
 
-const RenderState = ({ state, places }) => {
+const RenderState = ({ state, places, setPlace }) => {
   if (!state)
     return (
       <div>
@@ -22,13 +22,11 @@ const RenderState = ({ state, places }) => {
     );
   else {
     const pl = places.places.map((place) => {
-      place.image = "/public/utils/" + place.image;
       return (
-        <Fade in key={place._id}>
-          {" "}
-          <RenderStates state={place} />
+        <div key={place._id}>
+          <RenderStates state={place} setPlace={(s) => setPlace(s)} />
           <br />
-        </Fade>
+        </div>
       );
     });
     return (
@@ -101,9 +99,7 @@ const RenderState = ({ state, places }) => {
             </h1>
           </div>
           <div className="col-lg-12 col-md-4 col-sm-2">
-            <Media list>
-              <Stagger in>{pl}</Stagger>
-            </Media>
+            <Media list>{pl}</Media>
           </div>
         </div>
       </div>

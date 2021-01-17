@@ -84,7 +84,7 @@ const Body = (props) => {
     return (
       <Fade in key={state._id}>
         {" "}
-        <RenderStates state={state} />
+        <RenderStates state={state} setPlace={(s) => props.setPlace(s)} />
         <br />
       </Fade>
     );

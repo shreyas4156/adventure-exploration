@@ -48,7 +48,11 @@ const App = ({ states, fetchStates, setPlaces, places }) => {
     setStateHelper(state);
     return (
       <div style={{ textAlign: "center" }}>
-        <RenderState state={state} places={places}></RenderState>
+        <RenderState
+          state={state}
+          places={places}
+          setPlace={(p) => setPlace(p)}
+        ></RenderState>
       </div>
     );
   };
@@ -67,31 +71,40 @@ const App = ({ states, fetchStates, setPlaces, places }) => {
         <Route
           exact
           path="/states"
-          component={() => <Body states={states.states} />}
+          component={() => (
+            <Body states={states.states} setPlace={(p) => setPlace(p)} />
+          )}
         />
         <Route path="/states/:state" component={renderStateHelper} />
         <Redirect to="/states" />
       </Switch>
       {place ? (
         <Modal isOpen={place ? true : false} toggle={toggle}>
-          <ModalHeader toggle={toggle}>place</ModalHeader>
-          <ModalBody>
+          <ModalHeader
+            style={{
+              backgroundColor: "rgba(232, 223, 220, 0.7)",
+            }}
+            toggle={toggle}
+          >
+            {place.label || place.name}
+          </ModalHeader>
+          <ModalBody
+            style={{
+              backgroundColor: "rgba(232, 223, 220, 0.7)",
+            }}
+          >
             <div>
               <CardImg
-                src={"public/utils" + place.image}
+                src={
+                  place.hasOwnProperty("caption")
+                    ? place.image
+                    : "/public/utils/" + place.image
+                }
                 alt={place.name}
               ></CardImg>
             </div>
             {place.description}
           </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={toggle}>
-              Do Something
-            </Button>{" "}
-            <Button color="secondary" onClick={toggle}>
-              Cancel
-            </Button>
-          </ModalFooter>
         </Modal>
       ) : null}
       <Footer />
